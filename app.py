@@ -21,6 +21,13 @@ class UI:
         Gtk.main_quit(args)
 
     def on_button_clicked(self, button):
+	if self.filename is not 'void':
+		os.remove(self.filename)
+
+		print 'Removed "' + self.filename + '"'
+
+		self.filename = 'void'
+
         textBuffer = self.txtInput.get_buffer()
 	start, end = textBuffer.get_bounds()
 	data = textBuffer.get_text(start, end, False)
